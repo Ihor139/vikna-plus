@@ -518,7 +518,7 @@
 }
 
 .location-tabs-content-item {
-    display: none;
+    /* display: none; */
     /* transition: all ease 0.8s 0.4s;
     transform: translateY(120%); */
 }

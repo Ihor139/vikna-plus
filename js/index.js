@@ -55,7 +55,6 @@ $(document).ready(function() {
     $('.location-tabs-content-item').hide();
     $('.location-tabs-content-item:first').show();
 
-
     $('.tabs-btn').on('click', function() {
         $('.tabs-btn').removeClass('active')
         $(this).addClass('active')
