@@ -3,6 +3,7 @@ $(document).ready(function() {
     let btnMenu = document.querySelectorAll('.menu');
     let btnBack = document.querySelectorAll('.back');
     let headNav = document.querySelector('.header-navigation');
+    let sideMenu = document.querySelector('.side-menu');
     let btnMenuItem2 = document.querySelectorAll('.menu-item-link');
     let btnMenuItem3 = document.querySelectorAll('.side-menu-list-1-item-link');
     let searchForm = document.querySelectorAll('.search-form')
@@ -11,10 +12,11 @@ $(document).ready(function() {
     let backToMenuBtn = document.querySelectorAll('.back-to-menu');
     let backToMainMenuBtn = document.querySelectorAll('.back-to-main-menu');
     let backToMenuLv2Btn = document.querySelectorAll('.back-menu-1');
-    let page = document.querySelectorAll('.page-wrapper')
+    let page = document.querySelector('.page-wrapper')
     let productBtn = document.querySelector('.product')
     let aboutBtn = document.querySelectorAll('.about')
     let menuAbout = document.querySelectorAll('.menu-item-about')
+    let popup = document.querySelector('.popup')
 
     // Footer position
 
@@ -26,15 +28,21 @@ $(document).ready(function() {
 
     // Popup window of location
 
-    $('.popup-wrapper').addClass('active');
-    $('.popup-wrapper').hide();
+    $(popup).addClass('active');
+    $(popup).hide();
 
     $('.location').on('click', function() {
-        $('.popup-wrapper').fadeIn(300);
+        $(popup).fadeIn(300);
     })
 
     $('.close-popup').on('click', function() {
-        $('.popup-wrapper').hide(300);
+        $(popup).hide(300);
+    })
+
+    $(window).on('click', function(e) {
+        if (e.target == popup) {
+            $(popup).hide(300);
+        }
     })
 
     //Tabs
@@ -72,17 +80,34 @@ $(document).ready(function() {
         $(searchForm).addClass('active')
     })
 
-    $(btnBack).on('click', () => {
-        $(headNav).toggleClass('active');
-        $(btnMenu).toggleClass('active');
-        $(btnBack).toggleClass('active');
-        $(page).toggleClass('open-menu');
-        $(menuAbout).removeClass('active');
-        $(searchForm).addClass('active')
+    // function closeMenu() {
+    $(btnBack).on('click', function() {
+            $(headNav).toggleClass('active');
+            $(btnMenu).toggleClass('active');
+            $(btnBack).toggleClass('active');
+            $(page).toggleClass('open-menu');
+            $(menuAbout).removeClass('active');
+            $(searchForm).addClass('active')
+            $(menu2lv).removeClass('active');
+            $(menu3lv).removeClass('active');
+        })
+        // }
+        // closeMenu();
 
+    //????????????????
+
+    $('.main').on('click', function() {
+        $(headNav).removeClass('active');
+        $(btnMenu).addClass('active');
+        $(btnBack).removeClass('active');
+        $(page).removeClass('open-menu');
+        $(menuAbout).removeClass('active');
+        $(searchForm).removeClass('active')
         $(menu2lv).removeClass('active');
         $(menu3lv).removeClass('active');
     })
+
+    //????????????????
 
     $(aboutBtn).on('click', () => {
         $(headNav).addClass('active');
@@ -119,16 +144,45 @@ $(document).ready(function() {
 
     // jquery animate
 
+    let item1 = document.querySelector('.jquery-item-1'),
+        item2 = document.querySelector('.jquery-item-2'),
+        item3 = document.querySelector('.jquery-item-3');
 
-    $('.jquery-item-1').animate({
-        height: 50 + '%',
-    }, 2000, function() {});
-    $('.jquery-item-2').animate({
-        height: 75 + '%',
-    }, 2500, function() {});
-    $('.jquery-item-3').animate({
-        height: 100 + '%',
-    }, 3000, function() {});
+    const items = [item1, item2, item3];
+
+    function incrementHeight(start, step, delay, stepDelay) {
+        // let start = 50;
+        // let step = 25;
+        // let delay = 1000;
+        // let stepDelay = 1000;
+        for (let i = 0; i < items.length; i++) {
+            setTimeout(() => {
+                $(items[i]).animate({
+                    height: start + '%',
+                }, 1000);
+                start += step;
+            }, delay);
+            delay += stepDelay;
+        }
+    }
+    incrementHeight(50, 25, 1000, 1000);
+
+
+    // setTimeout(() => {
+    //     $(item1).animate({
+    //         height: 50 + '%',
+    //     }, 1000, function() {});
+    // }, 1000);
+    // setTimeout(() => {
+    //     $(item2).animate({
+    //         height: 75 + '%',
+    //     }, 1000, function() {});
+    // }, 2000);
+    // setTimeout(() => {
+    //     $(item3).animate({
+    //         height: 100 + '%',
+    //     }, 1000, function() {});
+    // }, 3000);
 
 
 });
