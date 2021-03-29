@@ -19,8 +19,34 @@
     border-bottom: 2px solid green;
 }
 
+.language-of-page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.languages-list {
+    display: block;
+    position: absolute;
+    top: -15px;
+    right: 0;
+    padding: 2px 3px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.languages-list .hidden {
+    display: none;
+}
+
 .languages-list li {
-    padding: 5px 0;
+    padding: 5px;
+    border: 1px solid transparent;
+    transition: all ease 0.8s;
+}
+
+.languages-list li:hover {
+    border: 1px solid red;
 }
 
 .header-navigation {
@@ -84,6 +110,15 @@
     padding: 10px 15px;
     padding: calc(5px + 0.29vw) calc(10px + 0.29vw);
     text-transform: uppercase;
+}
+
+.search-btn button {
+    text-transform: uppercase;
+}
+
+.search-btn button:hover {
+    border-bottom: 1px solid red;
+    cursor: pointer;
 }
 
 .section {
@@ -150,6 +185,8 @@
 
 .search-form form input {
     margin: 0 5px;
+    padding: 0 10px;
+    width: 100%;
     background-color: #fff;
 }
 
